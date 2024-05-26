@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using UnityEngine;
 public class GHook : MonoBehaviour
 {
@@ -32,20 +33,24 @@ public class GHook : MonoBehaviour
                 }
             lineRenderer.enabled = isWebSHooted;
         }
-    }
 
-    void FixedUpdate()
-    {
         if(isWebSHooted)
         {
             lineRenderer.SetPosition(0,transform.position);
             lineRenderer.SetPosition(1, _hit.point);
-            rb.AddForce((_hit.point - transform.position).normalized*15,ForceMode.VelocityChange);
-            if (Vector3.Distance(transform.position, _hit.point) < 1)
+
+            if(Vector3.Distance(transform.position, _hit.point) > _hit.distance-2f)
             {
-                isWebSHooted = false;
-                lineRenderer.enabled = false;
+
+            rb.AddForce(-(Vector3.Project(rb.velocity, _hit.point - transform.position).normalized),ForceMode.Impulse);
             }
+            
+            //if (Vector3.Distance(transform.position, _hit.point) < 1)
+            //{
+            //    isWebSHooted = false;
+            //    lineRenderer.enabled = false;
+            //}
         }
     }
+
 }

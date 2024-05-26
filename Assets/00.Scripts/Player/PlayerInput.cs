@@ -12,6 +12,8 @@ public class PlayerInput : MonoBehaviour
     void Start()
     {
         PlayerMovement.plmv.InputInit(this);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
@@ -19,9 +21,13 @@ public class PlayerInput : MonoBehaviour
     {
         if (Input.GetKeyDown(horKey1))
             _horizontal++;
-        //if()
+        if (Input.GetKeyUp(horKey1))
+            _horizontal--;
         if(Input.GetKeyDown(vertKey1))
+            _vertical++;
+        if (Input.GetKeyUp(vertKey1))
             _vertical--;
+
 
 
         Horizontal = Mathf.Lerp(Horizontal, Input.GetAxisRaw("Horizontal"), _inputSpeed * Time.deltaTime);

@@ -15,16 +15,16 @@ public class TestGun : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
 
         if(Input.GetKey(KeyCode.Mouse0) && time <=0)
         {
-            time = 0.02f;
+            time = 0.01f;
             BulletPool.Instance.GiveBullets(transform,ming);
             par.Play();
         }
-        time -= Time.fixedDeltaTime;
+        time -= Time.deltaTime;
     }
 
 }

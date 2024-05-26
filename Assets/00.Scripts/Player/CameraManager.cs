@@ -22,6 +22,9 @@ public class CameraManager : MonoBehaviour
         transform.eulerAngles = new Vector3(my,mx,0f);
         dick.eulerAngles = new Vector3(my, mx, 0f);
         body.root.rotation = Quaternion.LookRotation(Vector3.forward,PlayerMovement.plmv.gravityDir) * Quaternion.Euler(new Vector3(0, mx, 0));
-       
+        //body.root.up = PlayerMovement.plmv.gravityDir;
+        
+        //body.root.rotation = Quaternion.FromToRotation(Vector3.up,PlayerMovement.plmv.gravityDir)* Quaternion.Euler(new Vector3(0, mx, 0));
+        //transform.forward = Vector3.up;
     }
 }

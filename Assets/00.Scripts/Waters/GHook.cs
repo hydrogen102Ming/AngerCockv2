@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class GHook : MonoBehaviour
 {
     public Rigidbody rb;
@@ -23,10 +22,11 @@ public class GHook : MonoBehaviour
             isWebSHooted = !isWebSHooted;
 
             if(isWebSHooted)
-                if(Physics.Raycast(PlayerMovement.plmv.Cam.position, transform.forward,out _hit,1024,la))
+                if (Physics.Raycast(Player.Instance.playerMovement.Cam.position, transform.forward, out _hit, 1024, la))
                 {
-                    
-                }else
+
+                }
+                else
                 {
                     isWebSHooted = false;
                 }

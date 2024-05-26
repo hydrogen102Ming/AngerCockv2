@@ -18,7 +18,6 @@ public class Projectile : Bullet
     }
     void FixedUpdate()
     {
-
         //transform.Rotate(new Vector3(rotataionCurvv.Evaluate(), 0, 0));
         transform.Rotate(new Vector3(rotatespeed, 0, 0));
         base.FixedUpdate();

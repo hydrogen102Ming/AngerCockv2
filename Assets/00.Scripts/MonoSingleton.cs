@@ -13,10 +13,10 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T
     private static T Initialize()
     {
         GameObject gameObject = new GameObject();
+        gameObject.name = "Singleton_" + typeof(T).Name;
         T result = gameObject.AddComponent<T>();
         return result;
     }
-
     protected virtual void Awake()
     {
         if (_instance is not null)
@@ -25,7 +25,6 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T
             return;
         }
         _instance = this as T;
-        name = "Singleton_" + typeof(T).Name;
     }
     protected virtual void OnDestroy()
     {

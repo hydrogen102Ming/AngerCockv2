@@ -14,8 +14,11 @@ public class Player : MonoSingleton<Player>
     protected override void Awake()
     {
         base.Awake();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         playerInput.OnMovement += HandleOnMovement;
         playerInput.OnMouse += HandleOnMouse;
+        playerInput.OnJump += HandleOnJump;
     }
     private void Update()
     {
@@ -25,12 +28,14 @@ public class Player : MonoSingleton<Player>
     private void FixedUpdate()
     {
         moveDir.Normalize();
-        playerMovement.IhateBaeRemake(moveDir.x, moveDir.z);
+        playerMovement.IHateBaeRemasteredMordenWarfare4(moveDir.x, moveDir.z);
+        //playerMovement.IhateBaeRemake(moveDir.x, moveDir.z);
     }
     private void GetInput()
     {
         playerInput.GetInput();
     }
+    #region Handles
     private void HandleOnMouse(float arg1, float arg2)
     {
         mx = arg1;
@@ -40,4 +45,9 @@ public class Player : MonoSingleton<Player>
     {
         moveDir = obj;
     }
+    private void HandleOnJump()
+    {
+        playerMovement.TryJump();
+    }
+    #endregion
 }

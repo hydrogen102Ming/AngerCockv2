@@ -23,6 +23,6 @@ public class TauCannon : MonoBehaviour
 
     public void Shoot()
     {
-        PlayerMovement.plmv.ri.AddForce(-transform.forward*(float) _chargeCoundt*6 ,ForceMode.Impulse);
+        Player.Instance.playerMovement.ri.AddForce(-transform.forward*(float) _chargeCoundt*6 ,ForceMode.Impulse);
     }
 }

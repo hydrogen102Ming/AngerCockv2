@@ -11,12 +11,12 @@ public class Projectile : Bullet
     public Color color;
     public LimitBullet blType;
 
-   void OnEnable()
+    protected override void OnEnable()
     {
         transform.Rotate(new Vector3(Random.Range(-4, 4f), Random.Range(-4, 4f), Random.Range(-4, 4f)));
         base.OnEnable();
     }
-    void FixedUpdate()
+    protected override void FixedUpdate()
     {
         //transform.Rotate(new Vector3(rotataionCurvv.Evaluate(), 0, 0));
         transform.Rotate(new Vector3(rotatespeed, 0, 0));

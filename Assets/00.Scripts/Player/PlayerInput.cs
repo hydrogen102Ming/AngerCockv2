@@ -12,25 +12,24 @@ public class PlayerInput : MonoBehaviour
     public Action<Vector3> OnMovement;
     public Action<float, float> OnMouse;
 
-
     public float horizontal, vertical;
     [SerializeField] private float _inputSpeed = 100f;
 
     [Header("Mouse")]
-    public float rotspeedx = 2;
-    public float rotspeedy = -2;
+    public float rotspeedx = 2; //mouse sensX
+    public float rotspeedy = -2;//mouse sensY
     public float mx, my;
 
-    public KeyCode horKey1, horKey2, vertKey1, verKey2;
-    private float _horizontal, _vertical;
+    //public KeyCode horKey1, horKey2, vertKey1, verKey2;
+    //private float _horizontal, _vertical;
 
     public void GetInput()
     {
-        if (Input.GetKeyDown(horKey1))
-            _horizontal++;
-        //if()
-        if (Input.GetKeyDown(vertKey1))
-            _vertical--;
+        //if (Input.GetKeyDown(horKey1))
+        //    _horizontal++;
+        ////if()
+        //if (Input.GetKeyDown(vertKey1))
+        //    _vertical--;
         if (Input.GetKeyDown(KeyCode.Mouse0)) OnM1?.Invoke();
         if (Input.GetKeyDown(KeyCode.Mouse1)) OnM2?.Invoke();
         if (Input.GetKeyDown(KeyCode.Space)) OnJump?.Invoke();

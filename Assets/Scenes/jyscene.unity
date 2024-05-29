@@ -5343,6 +5343,10 @@ MonoBehaviour:
   playerMovement: {fileID: 146858102}
   playerInput: {fileID: 1609178966}
   speed: 0
+  playerItems:
+  - {fileID: 472981488}
+  - {fileID: 1929292841}
+  - {fileID: 2053458228}
 --- !u!1 &327865695
 GameObject:
   m_ObjectHideFlags: 0
@@ -32276,8 +32280,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed4ceda0d3ceec54fb6483587db35046, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontal: 0
-  vertical: 0
   _inputSpeed: 100
   rotspeedx: 2
   rotspeedy: -2

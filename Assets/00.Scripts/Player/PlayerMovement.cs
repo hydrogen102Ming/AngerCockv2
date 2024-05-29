@@ -1,6 +1,7 @@
 using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
+
     public Rigidbody ri;
     public Transform cam;
     public Transform col;
@@ -10,7 +11,6 @@ public class PlayerMovement : MonoBehaviour
     private float _speed = 5f, _maxSpeed = 8, _distance = 0.60001f, _jumpPower = 55f, _radius = 0.2f, _paintMaxspeed = 2f, _paintSpeed = 0.5f, _airspeed, _customGravity;
     private Vector3 _localVelocity, _plup, _moveVector;
     public Vector3 gravityDir;
-
 
     [Header("Detection Settings / Layer Masks")]
     [SerializeField] private LayerMask _groundLa;

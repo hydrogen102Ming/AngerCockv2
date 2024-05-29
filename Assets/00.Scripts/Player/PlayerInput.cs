@@ -6,13 +6,14 @@ public class PlayerInput : MonoBehaviour
 {
     //Actions
     public Action OnM1;
+    public Action OnM1Hold;
     public Action OnM2;
     public Action OnJump;
     public Action OnGrapple;
     public Action<Vector3> OnMovement;
     public Action<float, float> OnMouse;
 
-    public float horizontal, vertical;
+    private float horizontal, vertical;
     [SerializeField] private float _inputSpeed = 100f;
 
     [Header("Mouse")]
@@ -25,14 +26,12 @@ public class PlayerInput : MonoBehaviour
 
     public void GetInput()
     {
-        //if (Input.GetKeyDown(horKey1))
-        //    _horizontal++;
-        ////if()
-        //if (Input.GetKeyDown(vertKey1))
-        //    _vertical--;
         if (Input.GetKeyDown(KeyCode.Mouse0)) OnM1?.Invoke();
+        if (Input.GetKey(KeyCode.Mouse0)) OnM1Hold?.Invoke();
         if (Input.GetKeyDown(KeyCode.Mouse1)) OnM2?.Invoke();
         if (Input.GetKeyDown(KeyCode.Space)) OnJump?.Invoke();
+
+        if (Input.GetKeyDown(KeyCode.R)) OnGrapple?.Invoke();
 
         horizontal = Mathf.Lerp(horizontal, Input.GetAxisRaw("Horizontal"), _inputSpeed * Time.deltaTime);
         vertical = Mathf.Lerp(vertical, Input.GetAxisRaw("Vertical"), _inputSpeed * Time.deltaTime);

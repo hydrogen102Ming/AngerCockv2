@@ -13,6 +13,7 @@ public class GHook : MonoBehaviour
     private List<Transform> _transformList = new List<Transform>();
     private bool isWebSHooted = false;
     private RaycastHit _hit;
+    float _distance;
     private bool b_canShot => true;
     private void Update()
     {
@@ -35,11 +36,11 @@ public class GHook : MonoBehaviour
         {
             lineRenderer.SetPosition(0, transform.position);
             lineRenderer.SetPosition(1, _hit.point);
-
+            _distance = Vector3.Distance(transform.position, _hit.point);
             if (Vector3.Distance(transform.position, _hit.point) > _hit.distance - 2f)
             {
 
-                rb.AddForce(-(Vector3.Project(rb.velocity, _hit.point - transform.position).normalized), ForceMode.Impulse);
+                rb.AddForce(-(Vector3.Project(rb.velocity, _hit.point - transform.position).normalized*(_distance-_hit.distance)), ForceMode.Impulse);
             }
 
             //if (Vector3.Distance(transform.position, _hit.point) < 1)

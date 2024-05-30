@@ -35,6 +35,7 @@ public class Projectile : Bullet
         transform.position = _hit.point;
         transform.up = _hit.normal;
         BulletLmitPool.Instance.GiveBullets(transform, blType);
+        BulletPool.Instance.CollectBullets(gameObject, bulletType);
         //Instantiate(dieEffect,_hit.point,Quaternion.FromToRotation(Vector3.up,_hit.normal));
     }
 }

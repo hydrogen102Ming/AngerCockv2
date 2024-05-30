@@ -5,21 +5,19 @@ using UnityEngine;
 public class ObjectPooling : MonoSingleton<ObjectPooling>
 {
 
-   private Dictionary<GameObject, Queue<GameObject>> _dictionary = new Dictionary<GameObject, Queue<GameObject>>();
+   private Dictionary<GameObject, Stack<GameObject>> _dictionary = new Dictionary<GameObject, Stack<GameObject>>();
    
-   [SerializeField] private int poolSize;
+   [SerializeField] protected int poolSize;
    
    [Header("Initialize")] 
-   [SerializeField] private GameObject bullet;
-   
-   
+   [SerializeField] protected GameObject bullet;
 
    private void Start()
    {
       InitializeNewPool(bullet);
    }
 
-   public GameObject GetObject(GameObject prefab)
+   public virtual GameObject GetObject(GameObject prefab)
    {
       if (_dictionary.ContainsKey(prefab) == false)
       {
@@ -31,9 +29,8 @@ public class ObjectPooling : MonoSingleton<ObjectPooling>
          CreateNewObject(prefab);
       }
 
-      GameObject objectToGet = _dictionary[prefab].Dequeue();
+      GameObject objectToGet = _dictionary[prefab].Pop();
       objectToGet.SetActive(true);
-      transform.parent = null;
       return objectToGet;
    }
 
@@ -45,19 +42,18 @@ public class ObjectPooling : MonoSingleton<ObjectPooling>
       ReturnToPool(objectToReturn);
    }
    
-   private void ReturnToPool(GameObject prefab)
+   protected virtual void  ReturnToPool(GameObject prefab)
    {
       GameObject newPrefab = prefab.GetComponent<PooledObject>().originalPrefab;
       
       prefab.SetActive(false);
-      prefab.transform.parent = transform;
       
-      _dictionary[newPrefab].Enqueue(prefab);
+      _dictionary[newPrefab].Push(prefab);
    }
    
-   private void InitializeNewPool(GameObject prefab)
+   protected virtual void InitializeNewPool(GameObject prefab)
    {
-      _dictionary[prefab] = new Queue<GameObject>();  
+      _dictionary[prefab] = new Stack<GameObject>();
       
       for (int i = 0; i < poolSize; i++)
       {
@@ -65,13 +61,13 @@ public class ObjectPooling : MonoSingleton<ObjectPooling>
       }
    }
 
-   private void CreateNewObject(GameObject prefab)
+   protected void CreateNewObject(GameObject prefab)
    {
       GameObject newObject = Instantiate(prefab, transform);
       
       newObject.AddComponent<PooledObject>().originalPrefab = prefab;
       newObject.SetActive(false);
       
-      _dictionary[prefab].Enqueue(newObject);
+      _dictionary[prefab].Push(newObject);
    }
 }

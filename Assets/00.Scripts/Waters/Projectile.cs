@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class Projectile : Bullet
@@ -11,6 +8,8 @@ public class Projectile : Bullet
     public Color color;
     public LimitBullet blType;
 
+    [SerializeField] private GameObject yellowWater;
+    
     protected override void OnEnable()
     {
         transform.Rotate(new Vector3(Random.Range(-4, 4f), Random.Range(-4, 4f), Random.Range(-4, 4f)));
@@ -34,8 +33,11 @@ public class Projectile : Bullet
         }
         transform.position = _hit.point;
         transform.up = _hit.normal;
-        BulletLmitPool.Instance.GiveBullets(transform, blType);
-        BulletPool.Instance.CollectBullets(gameObject, bulletType);
+        //BulletLmitPool.Instance.GiveBullets(transform, blType);
+        
+        GameObject newOjb = ObjectLimitPooling.instance.GetObject(yellowWater);
+        newOjb.transform.SetPositionAndRotation(transform.position , transform.rotation);
+        
         //Instantiate(dieEffect,_hit.point,Quaternion.FromToRotation(Vector3.up,_hit.normal));
     }
 }

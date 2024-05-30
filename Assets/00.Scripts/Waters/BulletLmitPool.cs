@@ -35,6 +35,7 @@ public class BulletLmitPool : MonoBehaviour
         _stack[(int)bulletType].Push(bullet);                //ÃÑ¾Ë È¸¼ö
 
         _stack[(int)bulletType].Peek().SetActive(false);
+        
         _queue[(int)bulletType].Dequeue();
     }
     public void GiveBullets(Transform targetpos, LimitBullet bulletType)

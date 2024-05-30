@@ -1,6 +1,6 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Net.NetworkInformation;
 using UnityEngine;
 
 public class GHook : MonoBehaviour
@@ -9,22 +9,19 @@ public class GHook : MonoBehaviour
     public GameObject anchor;
     public LineRenderer lineRenderer;
     public LayerMask la;
-    List<Transform> _transformList = new List<Transform>();
-    bool isWebSHooted = false;
-    RaycastHit _hit;
-    void Start()
-    {//if(_rb == null)
-        //_rb = GetComponent<Rigidbody>();
-    }
 
+    private List<Transform> _transformList = new List<Transform>();
+    private bool isWebSHooted = false;
+    private RaycastHit _hit;
+    private bool b_canShot => true;
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && b_canShot)
         {
             isWebSHooted = !isWebSHooted;
 
             if (isWebSHooted)
-                if (Physics.Raycast(Player.Instance.playerMovement.cam.position, transform.forward, out _hit, 1024, la))
+                if (Physics.Raycast(Player.Instance.cameraManager.body.position, transform.forward, out _hit, 1024, la))
                 {
 
                 }
@@ -34,7 +31,6 @@ public class GHook : MonoBehaviour
                 }
             lineRenderer.enabled = isWebSHooted;
         }
-
         if (isWebSHooted)
         {
             lineRenderer.SetPosition(0, transform.position);

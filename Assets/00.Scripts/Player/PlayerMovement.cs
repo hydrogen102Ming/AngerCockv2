@@ -2,7 +2,6 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody ri;
-    public Transform cam;
     public Transform col;
     public Animator anime;
 
@@ -10,7 +9,6 @@ public class PlayerMovement : MonoBehaviour
     private float _speed = 5f, _maxSpeed = 8, _distance = 0.60001f, _jumpPower = 55f, _radius = 0.2f, _paintMaxspeed = 2f, _paintSpeed = 0.5f, _airspeed, _customGravity;
     private Vector3 _localVelocity, _plup, _moveVector;
     public Vector3 gravityDir;
-
 
     [Header("Detection Settings / Layer Masks")]
     [SerializeField] private LayerMask _groundLa;
@@ -57,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
         {
             _isGrounded = true;
             _moveVector = _moveVector - (ri.velocity / _maxSpeed / _maxSpeedMulti);
-            _moveVector = Vector3.ProjectOnPlane(_moveVector.normalized, _hit.normal) * _speed * _speedMulti;
+            _moveVector = Vector3.ProjectOnPlane(_moveVector, _hit.normal) * _speed * _speedMulti;
             // ri.AddForce((transform.TransformVector(new Vector3(_input.Horizontal - _localVelocity.x / 1.3f / _maxSpeed/_maxSpeedMulti, 0, _input.Vertical - _localVelocity.z / _maxSpeed/_maxSpeedMulti))) * _speed*_speedMulti);
             // print(ri.velocity.magnitude);
         }

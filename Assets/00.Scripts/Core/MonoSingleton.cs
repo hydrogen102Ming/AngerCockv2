@@ -21,6 +21,7 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T
     {
         if (_instance is not null)
         {
+            Debug.LogError("twoSingletons");
             Destroy(gameObject);
             return;
         }

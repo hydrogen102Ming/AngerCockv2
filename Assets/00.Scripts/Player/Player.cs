@@ -1,24 +1,28 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 public class Player : MonoSingleton<Player>
 {
     #region Components
     public CameraManager cameraManager;
     public PlayerMovement playerMovement;
-    public PlayerInput playerInput;
     #endregion
+
     [Header("Movement")]
     [SerializeField] private float speed;
     private Vector3 moveDir;
+
+    [Header("Mouse")]
+    public float rotspeedx = 2; //mouse sensX
+    public float rotspeedy = -2;//mouse sensY
+    private float horizontal, vertical;
+    [SerializeField] private float _inputSpeed = 100f;
     private float mx, my;
     protected override void Awake()
     {
         base.Awake();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        playerInput.OnMovement += HandleOnMovement;
-        playerInput.OnMouse += HandleOnMouse;
-        playerInput.OnJump += HandleOnJump;
     }
     private void Update()
     {
@@ -29,25 +33,17 @@ public class Player : MonoSingleton<Player>
     {
         moveDir.Normalize();
         playerMovement.IHateBaeRemasteredMordenWarfare4(moveDir.x, moveDir.z);
-        //playerMovement.IhateBaeRemake(moveDir.x, moveDir.z);
     }
     private void GetInput()
     {
-        playerInput.GetInput();
+        horizontal = Mathf.Lerp(horizontal, Input.GetAxisRaw("Horizontal"), _inputSpeed * Time.deltaTime);
+        vertical = Mathf.Lerp(vertical, Input.GetAxisRaw("Vertical"), _inputSpeed * Time.deltaTime);
+        moveDir = new Vector3(horizontal, 0, vertical);
+
+        mx += Input.GetAxisRaw("Mouse X") * rotspeedx;
+        my += Input.GetAxisRaw("Mouse Y") * rotspeedy;
+        //my = Mathf.Clamp(my, -90, 90);
+
+        if (Input.GetKeyDown(KeyCode.Space)) playerMovement.TryJump();
     }
-    #region Handles
-    private void HandleOnMouse(float arg1, float arg2)
-    {
-        mx = arg1;
-        my = arg2;
-    }
-    private void HandleOnMovement(Vector3 obj)
-    {
-        moveDir = obj;
-    }
-    private void HandleOnJump()
-    {
-        playerMovement.TryJump();
-    }
-    #endregion
 }

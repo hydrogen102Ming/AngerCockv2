@@ -108,14 +108,7 @@ public class PlayerMovement : MonoBehaviour
         //transform.Rotate(new Vector3(0,Input.GetAxisRaw("Mouse X"), 0));
         if (Input.GetKeyDown(KeyCode.Space)&&(_isGrounded))
         {
-            if (_isPainted)
-            {
                 ri.AddForce((Vector3.up+gravityDir*5).normalized * _jumpPower*1.5f,ForceMode.Impulse);
-            }
-            else
-            {
-                ri.AddForce(gravityDir * _jumpPower,ForceMode.Impulse);
-            }
         }
 
         if(Input.GetKeyDown(KeyCode.LeftShift)) {

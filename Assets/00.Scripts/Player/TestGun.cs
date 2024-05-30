@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,25 +7,24 @@ public class TestGun : MonoBehaviour
 {
     public BulletTypeMing ming;
     public ParticleSystem par;
-    float time = 0;
+    private float time = 0;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-        if(Input.GetKey(KeyCode.Mouse0) && time <=0)
+        if (Input.GetKey(KeyCode.Mouse0) && time <= 0)
         {
-            time = 0.01f;
-            BulletPool.Instance.GiveBullets(transform,ming);
-            par.Play();
+            time = 0.02f;
+            //BulletPool.Instance.GiveBullets(transform,ming);
+            //par.Play();
+            Fire();
         }
         time -= Time.deltaTime;
     }
+    public void Fire()
+    {
+        BulletPool.Instance.GiveBullets(transform,ming);
+        par.Play();
+    }
+
 
 }

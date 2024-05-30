@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GHookAnchor : MonoBehaviour
 {
+    //not finished and unused
     public Transform next;
     public LayerMask layerMask;
     RaycastHit _hit;

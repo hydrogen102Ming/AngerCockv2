@@ -12,12 +12,12 @@ public class Bullet : MonoBehaviour
     internal RaycastHit _hit;
     public BulletTypeMing bulletType;
 
-    internal void OnEnable()
+    protected virtual void OnEnable()
     {
         _time = 0; // √—æÀ LifeTime √ ±‚»≠
     }
 
-    public void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         if(Physics.SphereCast(transform.position,radius,transform.forward,out _hit,speed,layerMask))
         {

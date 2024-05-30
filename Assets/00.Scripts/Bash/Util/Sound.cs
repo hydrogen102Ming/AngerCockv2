@@ -6,6 +6,6 @@ public class Sound : MonoBehaviour
 {
     public void AudioPlayer(AudioClip clip)
     {
-        SoundManager.instance.AudioPlayer(clip);
+        //SoundManager.instance.AudioPlayer(clip);
     }
 }

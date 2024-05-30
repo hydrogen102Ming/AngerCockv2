@@ -4,27 +4,14 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
-    public Transform cam, body,dick;
-    public float rotspeedx=2,rotspeedy=-2;
-    public float mx, my;
-    // Update is called once per frame
-    private void Awake()
+    public Transform body, dick;
+    public void ApplyCamera(float mx, float my, Vector3 gravityDir)
     {
-        PlayerMovement.plmv.Cam = transform;
-        PlayerMovement.plmv.CamInit(this);
-    }
-    void Update()
-    {
-        cam.position = body.position;
+        //cam.position = body.position; changed to 11
+        transform.position = body.position;
 
-        mx +=Input.GetAxisRaw("Mouse X")*rotspeedx;
-        my += Input.GetAxisRaw("Mouse Y") * rotspeedy;
-        transform.eulerAngles = new Vector3(my,mx,0f);
+        transform.eulerAngles = new Vector3(my, mx, 0f);
         dick.eulerAngles = new Vector3(my, mx, 0f);
-        body.root.rotation = Quaternion.LookRotation(Vector3.forward,PlayerMovement.plmv.gravityDir) * Quaternion.Euler(new Vector3(0, mx, 0));
-        //body.root.up = PlayerMovement.plmv.gravityDir;
-        
-        //body.root.rotation = Quaternion.FromToRotation(Vector3.up,PlayerMovement.plmv.gravityDir)* Quaternion.Euler(new Vector3(0, mx, 0));
-        //transform.forward = Vector3.up;
+        body.root.rotation = Quaternion.LookRotation(Vector3.forward, gravityDir) * Quaternion.Euler(new Vector3(0, mx, 0));
     }
 }

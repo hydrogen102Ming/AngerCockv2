@@ -1,17 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TauCannon : MonoBehaviour
 {
+    public Rigidbody ri;
     public Animator animator;
-    int _chargeCoundt = 0;
-
-    private void FixedUpdate()
+    private int _chargeCoundt = 0;
+    private void Awake()
+    {
+        ri = Player.Instance.playerMovement.ri;
+    }
+    private void Update()
     {
         animator.SetBool("TauCharge", Input.GetKey(KeyCode.Mouse1));
     }
-
     public void ChargeCount()
     {
         _chargeCoundt++;
@@ -20,9 +24,9 @@ public class TauCannon : MonoBehaviour
             _chargeCoundt--;
         }
     }
-
     public void Shoot()
     {
-        PlayerMovement.plmv.ri.AddForce(-transform.forward*(float) _chargeCoundt*6 ,ForceMode.Impulse);
+        ri.AddForce(-transform.forward*(float) _chargeCoundt*6 ,ForceMode.Impulse);
     }
+
 }

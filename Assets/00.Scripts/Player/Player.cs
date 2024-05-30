@@ -42,7 +42,7 @@ public class Player : MonoSingleton<Player>
 
         mx += Input.GetAxisRaw("Mouse X") * rotspeedx;
         my += Input.GetAxisRaw("Mouse Y") * rotspeedy;
-        //my = Mathf.Clamp(my, -90, 90);
+        my = Mathf.Clamp(my, -90, 90);
 
         if (Input.GetKeyDown(KeyCode.Space)) playerMovement.TryJump();
     }

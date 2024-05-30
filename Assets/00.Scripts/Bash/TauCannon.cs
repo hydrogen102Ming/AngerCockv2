@@ -8,9 +8,10 @@ public class TauCannon : MonoBehaviour
     public Rigidbody ri;
     public Animator animator;
     private int _chargeCoundt = 0;
-    private void Awake()
+    private void Start()
     {
         ri = Player.Instance.playerMovement.ri;
+
     }
     private void Update()
     {

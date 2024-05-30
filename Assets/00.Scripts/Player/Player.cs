@@ -12,7 +12,6 @@ public class Player : MonoSingleton<Player>
     [SerializeField] private float speed;
     private Vector3 moveDir;
 
-
     [Header("Mouse")]
     public float rotspeedx = 2; //mouse sensX
     public float rotspeedy = -2;//mouse sensY
@@ -24,8 +23,6 @@ public class Player : MonoSingleton<Player>
         base.Awake();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-
-
     }
     private void Update()
     {
@@ -45,6 +42,7 @@ public class Player : MonoSingleton<Player>
 
         mx += Input.GetAxisRaw("Mouse X") * rotspeedx;
         my += Input.GetAxisRaw("Mouse Y") * rotspeedy;
+        //my = Mathf.Clamp(my, -90, 90);
 
         if (Input.GetKeyDown(KeyCode.Space)) playerMovement.TryJump();
     }

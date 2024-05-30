@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
             //_isGrounded = true;
             for(int i=0; i<_Paints.Length; i++)
             {
-                gravityDir = (gravityDir + _Paints[i].transform.up)/2;
+                gravityDir = (Vector3.up + _Paints[i].transform.up)/2;
             }
             _speedMulti = _paintSpeed;
             _maxSpeedMulti = _paintMaxspeed;
@@ -71,13 +71,13 @@ public class PlayerMovement : MonoBehaviour
         }
 
         _localVelocity = transform.InverseTransformVector(ri.velocity);
-        _moveVector = transform.TransformVector(new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"))).normalized;
+        _moveVector = transform.TransformVector(new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")));
 
         if (Physics.SphereCast(transform.position, _radius, -gravityDir, out _hit, _distance, _groundLa))
         {
             _isGrounded = true;
             _moveVector = _moveVector - (ri.velocity/_maxSpeed/_maxSpeedMulti);
-            _moveVector = Vector3.ProjectOnPlane(_moveVector.normalized, _hit.normal) * _speed*_speedMulti;
+            _moveVector = Vector3.ProjectOnPlane(_moveVector, _hit.normal) * _speed*_speedMulti;
            // ri.AddForce((transform.TransformVector(new Vector3(_input.Horizontal - _localVelocity.x / 1.3f / _maxSpeed/_maxSpeedMulti, 0, _input.Vertical - _localVelocity.z / _maxSpeed/_maxSpeedMulti))) * _speed*_speedMulti);
            // print(ri.velocity.magnitude);
         }

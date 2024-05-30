@@ -40,7 +40,7 @@ public class GHook : MonoBehaviour
             if (Vector3.Distance(transform.position, _hit.point) > _hit.distance - 2f)
             {
 
-                rb.AddForce(-(Vector3.Project(rb.velocity, _hit.point - transform.position).normalized*(_distance-_hit.distance)), ForceMode.Impulse);
+                rb.AddForce(-(Vector3.Project(rb.velocity, _hit.point - transform.position).normalized), ForceMode.Impulse);
             }
 
             //if (Vector3.Distance(transform.position, _hit.point) < 1)

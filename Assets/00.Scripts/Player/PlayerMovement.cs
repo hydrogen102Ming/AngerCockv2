@@ -27,13 +27,13 @@ public class PlayerMovement : MonoBehaviour
     }
     public void IHateBaeRemasteredMordenWarfare4(float hor, float ver)
     {
-        if (Physics.OverlapSphereNonAlloc(transform.position - transform.up * -0.5f, 1f, _Paints, _paintLa) > 0)
+        if (Physics.OverlapSphereNonAlloc(transform.position - transform.up * -0.3f, 1f, _Paints, _paintLa) > 0)
         {
             _isPainted = true;
             //_isGrounded = true;
             for (int i = 0; i < _Paints.Length; i++)
             {
-                gravityDir = (gravityDir + _Paints[i].transform.up) / 2;
+                gravityDir = (_Paints[i].transform.up).normalized;
             }
             _speedMulti = _paintSpeed;
             _maxSpeedMulti = _paintMaxspeed;

@@ -12,6 +12,6 @@ public class CameraManager : MonoBehaviour
 
         transform.eulerAngles = new Vector3(my, mx, 0f);
         dick.eulerAngles = new Vector3(my, mx, 0f);
-        body.root.rotation = Quaternion.LookRotation(Vector3.forward, gravityDir) * Quaternion.Euler(new Vector3(0, mx, 0));
+        body.root.rotation = Quaternion.LookRotation(Vector3.Cross(Vector3.right,gravityDir), gravityDir) * Quaternion.Euler(0, mx, 0);
     }
 }

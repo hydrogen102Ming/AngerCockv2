@@ -5320,8 +5320,8 @@ MonoBehaviour:
   ri: {fileID: 146858103}
   col: {fileID: 132079239}
   anime: {fileID: 472981491}
-  _speed: 45
-  _maxSpeed: 12
+  _speed: 78
+  _maxSpeed: 25
   _distance: 0.60001
   _jumpPower: 15
   _radius: 0.2
@@ -33022,7 +33022,7 @@ Transform:
   m_GameObject: {fileID: 1263871112}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.3, y: 2.1, z: -1.87}
+  m_LocalPosition: {x: 32.02, y: 4.78, z: -1.87}
   m_LocalScale: {x: 1, y: 11, z: 45}
   m_ConstrainProportionsScale: 0
   m_Children: []

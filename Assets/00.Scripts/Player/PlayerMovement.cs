@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         _localVelocity = transform.InverseTransformVector(ri.velocity);
-        _moveVector = transform.TransformVector(new Vector3(hor, 0, ver)).normalized;
+        _moveVector = transform.TransformDirection(new Vector3(hor, 0, ver)).normalized;
 
         if (Physics.SphereCast(transform.position, _radius, -gravityDir, out RaycastHit _hit, _distance, _groundLa))
         {

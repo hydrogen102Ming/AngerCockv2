@@ -60,6 +60,8 @@ MonoBehaviour:
     type: 3}
   color: {r: 0, g: 0.020210266, b: 1, a: 0.76862746}
   blType: 0
+  yellowWater: {fileID: 3075517221834109846, guid: d23da7a4a09f10c4b82e2c73d96ad108,
+    type: 3}
 --- !u!33 &4298340761254126704
 MeshFilter:
   m_ObjectHideFlags: 0

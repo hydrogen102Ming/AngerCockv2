@@ -7,6 +7,8 @@ public class TestGun : MonoBehaviour
     public BulletTypeMing ming;
     public ParticleSystem par;
     float time = 0;
+
+    [SerializeField] private GameObject bullet;
     void FixedUpdate()
     {
         if(Input.GetKey(KeyCode.Mouse0) && time <=0)
@@ -20,7 +22,13 @@ public class TestGun : MonoBehaviour
     }
     public void Fire()
     {
-        BulletPool.Instance.GiveBullets(transform,ming);
+        //BulletPool.Instance.GiveBullets(transform,ming);
+        
+        GameObject newObj = ObjectPooling.Instance.GetObject(bullet);
+        newObj.transform.position = transform.position;
+        newObj.transform.SetPositionAndRotation(transform.position , transform.rotation);
+        
+        
         par.Play();
     }
 }

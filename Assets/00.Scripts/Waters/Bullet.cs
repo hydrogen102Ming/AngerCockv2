@@ -26,14 +26,16 @@ public class Bullet : MonoBehaviour
             //    hp.Damage(damage); // 즉시 공격하기
             //}
             Collision();
-            BulletPool.Instance.CollectBullets(gameObject,bulletType); // 총알 풀링 해주기 ㅎㅎ
+            //BulletPool.Instance.CollectBullets(gameObject,bulletType); // 총알 풀링 해주기 ㅎㅎ
+            ObjectPooling.Instance.ReTurnObject(gameObject);
         }
             transform.position += transform.forward * speed; //총알 이동(레이로 쏜 궤적에 없으면 이동)
             _time += Time.fixedDeltaTime;
 
         if(_time >= _maxTime)
         {
-            BulletPool.Instance.CollectBullets(gameObject, bulletType); // 총알 풀링 ㄱ
+            ObjectPooling.Instance.ReTurnObject(gameObject);
+            //BulletPool.Instance.CollectBullets(gameObject, bulletType); // 총알 풀링 ㄱ
         }
     }
     public virtual void Collision()

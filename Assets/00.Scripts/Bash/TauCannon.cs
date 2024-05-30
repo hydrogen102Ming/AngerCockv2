@@ -5,8 +5,13 @@ using UnityEngine;
 
 public class TauCannon : MonoBehaviour
 {
+    public Rigidbody ri;
     public Animator animator;
     private int _chargeCoundt = 0;
+    private void Awake()
+    {
+        ri = Player.Instance.playerMovement.ri;
+    }
     private void Update()
     {
         animator.SetBool("TauCharge", Input.GetKey(KeyCode.Mouse1));
@@ -21,7 +26,7 @@ public class TauCannon : MonoBehaviour
     }
     public void Shoot()
     {
-        Player.Instance.playerMovement.ri.AddForce(-transform.forward*(float) _chargeCoundt*6 ,ForceMode.Impulse);
+        ri.AddForce(-transform.forward*(float) _chargeCoundt*6 ,ForceMode.Impulse);
     }
 
 }

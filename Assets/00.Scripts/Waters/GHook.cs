@@ -37,10 +37,11 @@ public class GHook : MonoBehaviour
             lineRenderer.SetPosition(0, transform.position);
             lineRenderer.SetPosition(1, _hit.point);
             _distance = Vector3.Distance(transform.position, _hit.point);
-            if (Vector3.Distance(transform.position, _hit.point) > _hit.distance - 2f)
+            if (Vector3.Distance(transform.position, _hit.point) > _hit.distance - 2)
             {
-
-                rb.AddForce(-(Vector3.Project(rb.velocity, _hit.point - transform.position).normalized), ForceMode.Impulse);
+                rb.velocity += -(Vector3.Project(rb.velocity, _hit.point - transform.position));
+                print("cock");
+                rb.AddForce((_hit.point - transform.position));
             }
 
             //if (Vector3.Distance(transform.position, _hit.point) < 1)

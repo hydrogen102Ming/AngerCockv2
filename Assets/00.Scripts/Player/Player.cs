@@ -5,7 +5,7 @@ public class Player : MonoSingleton<Player>
 {
     #region Components
     public CameraManager cameraManager;
-    public PlayerMovement playerMovement;
+    public PlayerMovementJunyoungCum playerMovement;
     #endregion
 
     [Header("Movement")]

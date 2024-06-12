@@ -4,21 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="423cdf4f-9cad-4240-bbf0-e5e415a3d291" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/00.Scripts/Waters/Pool.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/00.Scripts/Bash/TauCannon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Scripts/Bash/TauCannon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/00.Scripts/Core/MonoSingleton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Scripts/Core/MonoSingleton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/00.Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Scripts/Player/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/00.Scripts/Player/PlayerInput.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/00.Scripts/Player/PlayerInput.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Scripts/Waters/Pool.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/00.Scripts/Player/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Scripts/Player/PlayerMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/00.Scripts/Player/TestGun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Scripts/Player/TestGun.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/00.Scripts/Waters/GHook.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Scripts/Waters/GHook.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/04.Shader/ming.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/04.Shader/ming.shadergraph" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ming/PaintingAsset/Materials/PaintableMaterials/PaintableWall.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Ming/PaintingAsset/Materials/PaintableMaterials/PaintableWall.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/jyscene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/jyscene.unity" afterDir="false" />
-    </list>
+    <list default="true" id="423cdf4f-9cad-4240-bbf0-e5e415a3d291" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,7 +30,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Merging JYD",
+    "git-widget-placeholder": "JYD",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -106,6 +92,7 @@
       <updated>1717000378173</updated>
       <workItem from="1717000381315" duration="609000" />
       <workItem from="1717059571706" duration="118000" />
+      <workItem from="1717063383485" duration="903000" />
     </task>
     <servers />
   </component>

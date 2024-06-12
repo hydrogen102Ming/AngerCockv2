@@ -10,7 +10,7 @@ public class TauCannon : MonoBehaviour
     private int _chargeCoundt = 0;
     private void Start()
     {
-        ri = Player.Instance.playerMovement.ri;
+        ri = Player.Instance.playerMovement.rigidBody;
 
     }
     private void Update()

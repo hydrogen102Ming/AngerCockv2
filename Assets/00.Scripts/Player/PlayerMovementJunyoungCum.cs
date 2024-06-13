@@ -1,4 +1,5 @@
 using UnityEngine;
+
 public class PlayerMovementJunyoungCum : MonoBehaviour
 {
     public Rigidbody rigidBody;
@@ -16,7 +17,8 @@ public class PlayerMovementJunyoungCum : MonoBehaviour
 
     [Space(10)]
     [SerializeField] private float _gravity;
-    public Vector3 gravityDir;
+    public Vector3 gravityDir,addMoveVector,hookdir;
+    public bool hooked = false;
 
     private bool _isGrounded = false;
     private bool _isPainted = false;
@@ -28,6 +30,7 @@ public class PlayerMovementJunyoungCum : MonoBehaviour
 
     [SerializeField] private LayerMask _groundLa;
     [SerializeField] private LayerMask _paintLa;
+    Vector3 right2 = new Vector3(0.99f, 0, 0.01f);
     //void Awake()
     //{
     //    _groundCheckDistance = transform.localScale.y * 0.901f;
@@ -44,7 +47,7 @@ public class PlayerMovementJunyoungCum : MonoBehaviour
             bool isOnPaint = Physics.OverlapSphereNonAlloc(transform.position + transform.up * 0.3f, 1f, _arrPaints, _paintLa) > 0;
             if (isOnPaint)
             {
-                print("on Paint");
+
                 _isPainted = true;
                 //_isGrounded = true;
                 for (int i = 0; i < _arrPaints.Length; i++)
@@ -64,25 +67,30 @@ public class PlayerMovementJunyoungCum : MonoBehaviour
         }
         SetSpeed();
         Vector3 _localVelocity = transform.InverseTransformVector(rigidBody.velocity);
-        Vector3 _moveVector = transform.TransformDirection(new Vector3(hor, 0, ver)).normalized;
-
+        Vector3 _moveVector = Quaternion.Euler(0, Player.Instance.mx, 0) *new Vector3(hor, 0, ver).normalized ;
+        Vector3 a;
         bool isOnGround = Physics.SphereCast(transform.position, _groundCheckRadius, -gravityDir, out RaycastHit _hit, _groundCheckDistance, _groundLa);
         float speed = _speed * _speedMulti;
         float maxSpeed = _maxSpeed * _maxSpeedMulti;
+
         if (isOnGround)
         {
-            print("ong");
             _isGrounded = true;
-            _moveVector -= (rigidBody.velocity / maxSpeed);
-            _moveVector = Vector3.ProjectOnPlane(_moveVector, _hit.normal);
+                if(_hit.normal != Vector3.up)
+                {
+                _moveVector = Vector3.ProjectOnPlane(_moveVector, _hit.normal);
+                }
+            a = (rigidBody.velocity / maxSpeed);
         }
         else
         {
             _isGrounded = false;
-            _moveVector -= (rigidBody.velocity / maxSpeed);
+            
+            a= Vector3.Project((rigidBody.velocity / maxSpeed),_moveVector);
         }
-        rigidBody.AddForce(gravityDir.normalized * _gravity);
-        rigidBody.AddForce(_moveVector * speed);
+        //rigidBody.AddForce(gravityDir.normalized * _gravity,ForceMode.Acceleration);
+        _moveVector -= a.normalized * Mathf.Clamp(a.magnitude, 0, 1);
+        rigidBody.AddForce((_moveVector) * speed + addMoveVector + gravityDir.normalized * _gravity);
 
         //animation should not be setting in fixed update
         //animator.SetBool("Walk", _isGrounded && (Input.GetButton("Horizontal") || Input.GetButton("Vertical")));

@@ -17,7 +17,7 @@ public class Player : MonoSingleton<Player>
     public float rotspeedy = -2;//mouse sensY
     private float horizontal, vertical;
     [SerializeField] private float _inputSpeed = 100f;
-    private float mx, my;
+    public float mx, my;
     protected override void Awake()
     {
         base.Awake();

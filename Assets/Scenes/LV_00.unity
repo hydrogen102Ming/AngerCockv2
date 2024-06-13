@@ -6434,8 +6434,8 @@ MonoBehaviour:
   rigidBody: {fileID: 538941174}
   _speed: 300
   _maxSpeed: 12
-  _paintSpeedMulti: 1
-  _paintMaxspeedMulti: 1
+  _paintSpeed: 0
+  _paintMaxspeed: 2
   _jumpPower: 15
   _gravity: -9.8
   gravityDir: {x: 0, y: 1, z: 0}
